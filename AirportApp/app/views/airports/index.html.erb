@@ -1,0 +1,21 @@
+<% counter = 0 %>
+<% @airports.each do |airport| %>
+  <% ap = Airport.new %>
+  <% ap.code=(airport[:code]) %>
+  <h2><%= link_to ap.code, "/details?=#{counter}" %></h2>
+  <% counter = counter + 1 %>
+  <p>Temperature: <%= ap.temperature %>&degF</p>
+  <p>Delay:
+    <% if ap.delay < 15 %>
+      <font color="green">none</font>
+    <% elsif ap.delay < 30 %>
+      <font color="yellow">delayed 30min</font>
+    <% else %>
+      <font color="red">nightmare</font>
+      <% end %>
+  </p>
+<% end %>
+
+
+
+
